@@ -7,5 +7,17 @@
 .jumbotron {
     margin: 5rem 0rem;
     text-align: center;
+}
 
+.button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 3px #666;
+    filter: brightness(140%);
+    transform: scale(.95);
+
+}
+
+.flash {
+    filter: brightness(140%);
+    transform: scale(1.1);
 }

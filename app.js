@@ -1,4 +1,4 @@
-const colouredButtons = document.querySelectorAll('.button')
+const colouredButtons = document.querySelectorAll('.button');
 const buttonColours = [];
 for (const button of colouredButtons) {
   button.addEventListener('click', handleUserInput);
@@ -37,9 +37,19 @@ function addToGameSequence() {
 }
 
 function gameOver() {
-  console.log('Wrong, start again')
+  console.log('Wrong, start again');
   resetUserSequence();
   gameSequence.length = 0;
+  level = 1;
+}
+
+function renderGameSequence() {
+  gameSequence.forEach(flash => {
+    // Get the element by id
+
+    // toggle .button:active class
+
+  });
 }
 
 function checkUserInput(computerGeneratedSequence, usersEnteredSequence) {
@@ -59,8 +69,10 @@ function handleUserInput() {
   if (userTurn) {
     console.log(this.id);
     userSequence.push(this.id);
+  } else {
+    return;
   }
   if (gameSequence.length === userSequence.length) {
-    checkUserInput(gameSequence, userSequence)
+    checkUserInput(gameSequence, userSequence);
   }
 }
