@@ -19,6 +19,10 @@ function userGo() {
   userTurn = true;
 }
 
+function resetUserSequence() {
+  userSequence.length = 0;
+}
+
 function startGame() {
   console.log('Game Started');
   computerGo();
@@ -33,22 +37,23 @@ function addToGameSequence() {
 }
 
 function gameOver() {
-  userSequence.length = 0;
+  console.log('Wrong, start again')
+  resetUserSequence();
   gameSequence.length = 0;
 }
 
 function checkUserInput(computerGeneratedSequence, usersEnteredSequence) {
   if (JSON.stringify(computerGeneratedSequence) === JSON.stringify(usersEnteredSequence)) {
+    console.log('checking users input');
     level++;
-    console.log(level);
+    console.log(`Congrats, you're now on level ${level}`);
     computerGo();
+    resetUserSequence();
     addToGameSequence();
   } else {
     gameOver();
   }
 }
-
-
 
 function handleUserInput() {
   if (userTurn) {
