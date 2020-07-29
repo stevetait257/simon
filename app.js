@@ -43,14 +43,23 @@ function gameOver() {
   level = 1;
 }
 
-function renderGameSequence() {
-  gameSequence.forEach(flash => {
-    // Get the element by id
 
-    // toggle .button:active class
-
+const flash = (button) => {
+  return new Promise((resolve) => {
+    button = document.getElementById(button)
+    button.classList.toggle('flash');
+    setTimeout(() => {
+      button.classList.toggle('flash');
+      resolve();
+    }, 500);
   });
 }
+const renderFlashes = async () => {
+  for (const light of gameSequence) {
+    await flash(light);
+  }
+};
+
 
 function checkUserInput(computerGeneratedSequence, usersEnteredSequence) {
   if (JSON.stringify(computerGeneratedSequence) === JSON.stringify(usersEnteredSequence)) {
