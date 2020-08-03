@@ -5,7 +5,6 @@ for (const button of colouredButtons) {
   buttonColours.push(button.id);
 };
 const startButton = document.querySelector('#start').addEventListener('click', startGame);
-const NUMBER_OF_BUTTONS = document.querySelectorAll('.button');
 const gameSequence = [];
 const userSequence = [];
 let level = 1;
@@ -13,6 +12,7 @@ let userTurn;
 
 function computerGo() {
   userTurn = false;
+  addToGameSequence();
 }
 
 function userGo() {
@@ -26,11 +26,10 @@ function resetUserSequence() {
 function startGame() {
   console.log('Game Started');
   computerGo();
-  addToGameSequence();
 }
 
 function addToGameSequence() {
-  const randomNumber = Math.floor(Math.random() * NUMBER_OF_BUTTONS.length);
+  const randomNumber = Math.floor(Math.random() * colouredButtons.length);
   gameSequence.push(buttonColours[randomNumber]);
   console.log(gameSequence);
   userGo();
@@ -68,7 +67,6 @@ function checkUserInput(computerGeneratedSequence, usersEnteredSequence) {
     console.log(`Congrats, you're now on level ${level}`);
     computerGo();
     resetUserSequence();
-    addToGameSequence();
   } else {
     gameOver();
   }
