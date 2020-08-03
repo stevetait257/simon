@@ -31,7 +31,7 @@ function startGame() {
 function addToGameSequence() {
   const randomNumber = Math.floor(Math.random() * colouredButtons.length);
   gameSequence.push(buttonColours[randomNumber]);
-  console.log(gameSequence);
+  renderFlashes();
   userGo();
 }
 
@@ -41,7 +41,6 @@ function gameOver() {
   gameSequence.length = 0;
   level = 1;
 }
-
 
 const flash = (button) => {
   return new Promise((resolve) => {
@@ -58,7 +57,6 @@ const renderFlashes = async () => {
     await flash(light);
   }
 };
-
 
 function checkUserInput(computerGeneratedSequence, usersEnteredSequence) {
   if (JSON.stringify(computerGeneratedSequence) === JSON.stringify(usersEnteredSequence)) {
